@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="Pink_Lavender">#cdb4db</color>
+    <color name="Orchid_Pink">#ffc8dd</color>
+    <color name="Nadeshiko_Pink">#ffafcc</color>
+    <color name="Uranian_Blue">#bde0fe</color>
+    <color name="Baby_Blue_Eyes">#a2d2ff</color>
+
 </resources>
