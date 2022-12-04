@@ -92,8 +92,9 @@
             android:layout_marginLeft="50px"
             android:layout_marginRight="50px"
             android:backgroundTint="#FFFFFF"
-            android:text="Signup"
-            android:textColor="#000000" />
+            android:text="@string/signup"
+            android:textColor="#000000"
+            android:onClick="signupClick"/>
 
     </LinearLayout>
 </LinearLayout>

@@ -3,4 +3,14 @@
     <string name="login">Login</string>
     <string name="username">UserName</string>
     <string name="password">Password</string>
+    <string name="signup">SignUp</string>
+    <string name="fullname">Full Name</string>
+    <string name="email">Email</string>
+    <string name="termsAndConditions">Tap to open Terms and Conditions</string>
+    <string name="createAccount">Create Account</string>
+    <string name="iAgreeTandC">"I agree to terms and conditions"</string>
+    <string name="home">Home</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>>
 </resources>
