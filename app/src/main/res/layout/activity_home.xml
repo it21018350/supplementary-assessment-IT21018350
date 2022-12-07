@@ -14,4 +14,11 @@
         android:text="@string/home"
         android:textAlignment="center"
         android:textSize="34sp" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="logout"
+        android:text="@string/logout" />
 </LinearLayout>

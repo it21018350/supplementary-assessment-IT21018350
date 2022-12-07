@@ -10,12 +10,12 @@ import android.provider.BaseColumns;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBHandler extends SQLiteOpenHelper {
+public class DBHandlerUser extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "FeedReader.db";
 
-    public DBHandler(Context context) {
+    public DBHandlerUser(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -48,7 +48,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
 
-    public void addUser(String name,String username,String gender,String email,String password){
+    public long addUser(String name,String username,String gender,String email,String password){
         // Gets the data repository in write mode
         SQLiteDatabase db = getWritableDatabase();
 
@@ -62,9 +62,10 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId = db.insert(User.Users.TABLE_NAME, null, values);
+        return newRowId;
     }
 
-    public List fetchLoginUserByUsername(String username, String password) {
+    public int fetchLoginUserByUsername(String username, String password) {
         SQLiteDatabase db = getReadableDatabase();
 
         // Define a projection that specifies which columns from the database
@@ -93,15 +94,26 @@ public class DBHandler extends SQLiteOpenHelper {
                 sortOrder               // The sort order
         );
 
-        List itemIds = new ArrayList<>();
-        while(cursor.moveToNext()) {
-            long itemId = cursor.getLong(
-                    cursor.getColumnIndexOrThrow(User.Users._ID));
-            itemIds.add(itemId);
+        ArrayList<String> items = new ArrayList<String>();
+
+        while (cursor.moveToNext()){
+            items.add(cursor.getString(cursor.getColumnIndexOrThrow(User.Users._ID)));
+            items.add(cursor.getString(cursor.getColumnIndexOrThrow(User.Users.COLUMN_5)));
+
         }
+
+//        String string = cursor.getString(5);
+//        long id = cursor.getLong(cursor.getColumnIndexOrThrow(User.Users._ID));
         cursor.close();
 
-        return itemIds;
+        int id = Integer.parseInt(items.get(0));
+        String string123 = items.get(1).toString();
+
+        if (string123.equals(password)){
+            return id;
+        }else{
+            return -1;
+        }
     }
 
     public List fetchAllUserById(Integer id) {
@@ -137,15 +149,16 @@ public class DBHandler extends SQLiteOpenHelper {
                 sortOrder               // The sort order
         );
 
-        List itemIds = new ArrayList<>();
-        while(cursor.moveToNext()) {
-            long itemId = cursor.getLong(
-                    cursor.getColumnIndexOrThrow(User.Users._ID));
-            itemIds.add(itemId);
-        }
+        List items = new ArrayList<>();
+        items.add(cursor.getLong(cursor.getColumnIndexOrThrow(User.Users._ID)));
+        items.add(cursor.getLong(cursor.getColumnIndexOrThrow(User.Users.COLUMN_1)));
+        items.add(cursor.getLong(cursor.getColumnIndexOrThrow(User.Users.COLUMN_2)));
+        items.add(cursor.getLong(cursor.getColumnIndexOrThrow(User.Users.COLUMN_3)));
+        items.add(cursor.getLong(cursor.getColumnIndexOrThrow(User.Users.COLUMN_4)));
+
         cursor.close();
 
-        return itemIds;
+        return items;
     }
 
     public int updateUser(Integer id, String name, String gender, String email, String password) {
@@ -182,6 +195,4 @@ public class DBHandler extends SQLiteOpenHelper {
         // Issue SQL statement.
         int deletedRows = db.delete(User.Users.TABLE_NAME, selection, selectionArgs);
     }
-
-
 }
