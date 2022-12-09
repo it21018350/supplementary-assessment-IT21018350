@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ import com.example.supplementaryassessmentit21018350.Session.SessionManagement;
 public class Home extends AppCompatActivity {
 
     ListView lvContact;
+    Button addNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class Home extends AppCompatActivity {
         DBHandlerNotes noteHandler = new DBHandlerNotes(getApplicationContext());
 
         lvContact = findViewById(R.id.lvContact);
+        addNote = findViewById(R.id.addNote);
 
         SimpleCursorAdapter simpleCursorAdapter = noteHandler.fetchAllNoteById();
         lvContact.setAdapter(simpleCursorAdapter);
@@ -36,6 +39,14 @@ public class Home extends AppCompatActivity {
                 Cursor cursor = (Cursor) simpleCursorAdapter.getItem(position);
                 String title = cursor.getString(1);
                 Toast.makeText(Home.this, title, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        addNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, EditNote.class);
+                startActivity(intent);
             }
         });
 
