@@ -21,4 +21,14 @@
         android:layout_height="wrap_content"
         android:onClick="logout"
         android:text="@string/logout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lvContact"/>
+    </RelativeLayout>
 </LinearLayout>
