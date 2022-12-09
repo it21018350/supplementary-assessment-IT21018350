@@ -38,7 +38,11 @@ public class Home extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Cursor cursor = (Cursor) simpleCursorAdapter.getItem(position);
                 String title = cursor.getString(1);
-                Toast.makeText(Home.this, title, Toast.LENGTH_LONG).show();
+                int idNote = cursor.getInt(0);
+
+                Intent intent = new Intent(Home.this, EditNote.class);
+                intent.putExtra("noteId", idNote);
+                startActivity(intent);
             }
         });
 

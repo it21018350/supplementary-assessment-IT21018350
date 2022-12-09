@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Uranian_Blue"
     android:orientation="vertical"
     tools:context=".Home">
 
@@ -19,22 +20,30 @@
         android:id="@+id/addNote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
+        android:layout_marginBottom="50px"
         android:text="Add Note" />
 
     <Button
         android:id="@+id/btn_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
+        android:layout_marginBottom="50px"
         android:onClick="logout"
         android:text="@string/logout" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px">
 
         <ListView
+            android:id="@+id/lvContact"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/lvContact"/>
+            android:layout_height="match_parent" />
     </RelativeLayout>
 </LinearLayout>
