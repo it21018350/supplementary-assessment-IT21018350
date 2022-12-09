@@ -60,14 +60,17 @@ public class signup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DBHandlerUser dbHandlerUser = new DBHandlerUser(getApplicationContext());
-
-                long id = dbHandlerUser.addUser(fname.getText().toString(), uname.getText().toString(), gender, email.getText().toString(), password.getText().toString());
-
-                if(id != -1){
-                    Toast.makeText(signup.this, "user created successfully", Toast.LENGTH_SHORT).show();
-                    moveToLoginActivity();
+                if ((uname.getText().toString() == "" && uname.getText().toString() == null) || (password.getText().toString() == "" && password.getText().toString() == null)){
+                    Toast.makeText(signup.this, "required fields are empty", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(signup.this, "user created unsuccessfully", Toast.LENGTH_SHORT).show();
+                    long id = dbHandlerUser.addUser(fname.getText().toString(), uname.getText().toString(), gender, email.getText().toString(), password.getText().toString());
+
+                    if(id != -1){
+                        Toast.makeText(signup.this, "user created successfully", Toast.LENGTH_SHORT).show();
+                        moveToLoginActivity();
+                    }else{
+                        Toast.makeText(signup.this, "user created unsuccessfully", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

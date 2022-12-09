@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     EditText password;
     Button login;
     Button signup;
+    int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 DBHandlerUser handler = new DBHandlerUser(getApplicationContext());
 
                 int result = handler.fetchLoginUserByUsername(username.getText().toString(),password.getText().toString());
+                userId = result;
 
                 if(result != -1){
                     UserM user = new UserM(result, username.getText().toString());
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
     public void moveToHomeActivity(){
         Intent intent = new Intent(getApplicationContext(), Home.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("userId", this.userId);
         startActivity(intent);
     }
 

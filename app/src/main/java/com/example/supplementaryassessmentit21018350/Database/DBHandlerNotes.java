@@ -210,7 +210,7 @@ public class DBHandlerNotes extends SQLiteOpenHelper {
         return count;
     }
 
-    public void deleteNote(Integer id) {
+    public int deleteNote(Integer id) {
         SQLiteDatabase db = getWritableDatabase();
         // Define 'where' part of query.
         String uid = id.toString();
@@ -219,6 +219,7 @@ public class DBHandlerNotes extends SQLiteOpenHelper {
         String[] selectionArgs = { uid };
         // Issue SQL statement.
         int deletedRows = db.delete(Note.Notes.TABLE_NAME, selection, selectionArgs);
+        return deletedRows;
     }
 
 }

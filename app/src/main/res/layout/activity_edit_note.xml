@@ -42,12 +42,28 @@
         android:hint="Add your note hear"
         android:inputType="textMultiLine" />
 
-    <Button
-        android:id="@+id/addUpdateNote"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50px"
-        android:layout_marginRight="50px"
-        android:layout_marginBottom="50px"
-        android:text="Submit" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="177dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:backgroundTint="#FF0000"
+            android:text="delete"
+            android:visibility="visible"/>
+
+        <Button
+            android:id="@+id/addUpdateNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="50px"
+            android:text="Submit" />
+
+    </LinearLayout>
+
 </LinearLayout>
